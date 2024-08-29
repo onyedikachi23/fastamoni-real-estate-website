@@ -38,7 +38,8 @@ export default function NavBar() {
 				}}
 				paddingX="8"
 				paddingY="2"
-				bgColor="white">
+				bgColor="white"
+				zIndex={100}>
 				<Box>
 					<Button
 						onClick={handleShowMobileNavBar}

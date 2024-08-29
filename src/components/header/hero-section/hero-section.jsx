@@ -12,7 +12,7 @@ export default function HeroSection() {
 			<Text
 				as="p"
 				marginBottom="8"
-				fontSize="14"
+				fontSize="texts.primary"
 				lineHeight="1.6"
 				color="hero">
 				Explore premier real estate developments from top professionals,

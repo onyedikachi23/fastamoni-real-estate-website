@@ -10,6 +10,8 @@ const themes = {
 			900: "#101928",
 			500: "#667185",
 			75: "#F7F9FC",
+			navGray: "#7D7F88",
+			black: "hsla(160, 82%, 2%, 1)",
 		},
 		blue: {
 			100: "#007BFF",
@@ -19,15 +21,20 @@ const themes = {
 	fonts: {
 		// h1: "PP Neue Montreal",
 	},
-	fontSize: {
+	fontSizes: {
 		texts: {
 			primary: "14px",
+			secondary: "12px",
+			tabs: "10px",
 		},
 	},
-	lineHeight: {
+	lineHeights: {
 		texts: {
 			primary: "1.45",
 		},
+	},
+	spaces: {
+		sm: "8px",
 	},
 	components: {
 		Link: {
