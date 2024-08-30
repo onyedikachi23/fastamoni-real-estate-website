@@ -4,17 +4,26 @@ import { Box, Heading, Link as ChakraLink, Text } from "@chakra-ui/react";
 
 export default function HeroSection() {
 	return (
-		<Box paddingY="12" paddingX="8" bgColor="hsla(0, 0%, 0%, .6)">
-			<Heading as="h1" marginBottom="2" color="hero">
+		<Box
+			paddingBottom="12"
+			paddingTop="20"
+			paddingX="8"
+			bgColor="hsla(0, 0%, 0%, .6)">
+			<Heading as="h1" marginBottom="2" color="hero" maxWidth="760px">
 				Exceptional Real Estate Projects by Leading Developers
 			</Heading>
 
 			<Text
 				as="p"
 				marginBottom="8"
-				fontSize="texts.primary"
-				lineHeight="1.6"
-				color="hero">
+				fontSize={{
+					base: "texts.primary",
+					smm: "md",
+				}}
+				lineHeight="primaryXL"
+				letterSpacing="-3%"
+				color="hero"
+				maxWidth="760px">
 				Explore premier real estate developments from top professionals,
 				featuring luxurious condos, serene retreats, and cutting-edge
 				commercial spaces. Experience the finest craftsmanship,
@@ -32,6 +41,8 @@ export default function HeroSection() {
 				_hover={{
 					bgColor: "blue.100",
 					transform: `scale(1.2)`,
+					fontWeight: "bold",
+					border: "none",
 				}}>
 				Explore
 			</ChakraLink>

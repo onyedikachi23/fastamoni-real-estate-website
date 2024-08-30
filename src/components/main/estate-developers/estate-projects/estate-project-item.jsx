@@ -10,7 +10,12 @@ export default function EstateProject({ bgImgUrl }) {
 			bgImage={`url("${bgImgUrl}")`}
 			bgSize="cover"
 			bgPosition="center center"
-			padding="10rem 2rem 2rem 2rem"
+			paddingTop={{
+				base: "min(40%, 8rem)",
+				sm: "10rem",
+			}}
+			paddingBottom="2rem"
+			paddingX="min(10%, 2rem)"
 			borderRadius="xl">
 			{/* estate project header and description */}
 			<Flex direction="column" gap={2} color="white.100">

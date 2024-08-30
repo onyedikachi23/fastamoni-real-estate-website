@@ -11,8 +11,7 @@ export default function Header() {
 			bgImage="url('/assets/images/hero-img-mansion-banner.png')
 			"
 			bgSize="cover"
-			bgColor="hsla(0,0%,0%,0.6)"
-			paddingTop="10%">
+			bgColor="hsla(0,0%,0%,0.6)">
 			{/* NavBar section */}
 			<NavBar />
 

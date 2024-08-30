@@ -22,10 +22,10 @@ const projectsData = [
 		likes: 890,
 	},
 	{
-		title: "GRA Enugu",
-		projectBannerImg: "/assets/images/project-enugu-banner.jpg",
+		title: "Grenadines Heights",
+		projectBannerImg: "/assets/images/project-lagos-banner.png",
 		description: {
-			location: "GRA Enugu Town, Enugu",
+			location: "Ikeja, Lagos",
 			bathRooms: 4,
 			bedRooms: 4,
 		},
@@ -42,10 +42,10 @@ const projectsData = [
 		likes: 890,
 	},
 	{
-		title: "GRA Enugu",
-		projectBannerImg: "/assets/images/project-enugu-banner.jpg",
+		title: "Grenadines Heights",
+		projectBannerImg: "/assets/images/project-lagos-banner.png",
 		description: {
-			location: "GRA Enugu Town, Enugu",
+			location: "Ikeja, Lagos",
 			bathRooms: 4,
 			bedRooms: 4,
 		},

@@ -28,25 +28,19 @@ export default function SlideListsSwiper({ slides }) {
 		} else if (navBtn === "next") {
 			swiperRef.current?.slideNext();
 			setCurrentNavBtn(navBtn);
-			console.log("changed now");
 		}
 	}
 
 	// change currentNavBtn based on extreme sides position
 	useEffect(() => {
 		handleSwiperEndsChange();
-		console.log("called");
 	}, [currentNavBtn]);
 
 	// change currentNavBtn based on extreme sides position
 	function handleSwiperEndsChange() {
 		if (swiperRef.current?.isBeginning) {
-			console.log("swiper begin");
-
 			setCurrentNavBtn("next");
 		} else if (swiperRef.current?.isEnd) {
-			console.log("swiper end");
-
 			setCurrentNavBtn("prev");
 		}
 	}
@@ -54,6 +48,20 @@ export default function SlideListsSwiper({ slides }) {
 	return (
 		<Box>
 			<Swiper
+				breakpoints={{
+					768: {
+						slidesPerView: 2,
+						spaceBetween: 35,
+					},
+					1280: {
+						slidesPerView: 3,
+						spaceBetween: 45,
+					},
+					// 992: {
+					// 	slidesPerView: 4,
+					// 	spaceBetween: 55,
+					// },
+				}}
 				ref={swiperRef}
 				onBeforeInit={(swiper) => {
 					swiperRef.current = swiper;
@@ -61,7 +69,6 @@ export default function SlideListsSwiper({ slides }) {
 				// change currentNavBtn based on extreme sides position
 				onSlideChangeTransitionStart={() => {
 					handleSwiperEndsChange();
-					console.log("change transition");
 				}}
 				rewind={true}
 				modules={[

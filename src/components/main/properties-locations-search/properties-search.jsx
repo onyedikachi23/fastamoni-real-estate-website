@@ -12,12 +12,17 @@ import {
 export default function PropertiesSearch() {
 	return (
 		<Box>
-			<InputGroup color="grey.navGray">
+			<InputGroup
+				color="grey.navGray"
+				display="flex"
+				justifyContent="space-between"
+				alignItems="center">
 				<Input
 					type="search"
 					placeholder="Search property state or city"
+					flex={1}
 				/>
-				<InputRightAddon>
+				<InputRightAddon flex={1}>
 					<Select
 						variant="unstyled"
 						placeholder="Search all filters"

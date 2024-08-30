@@ -6,6 +6,10 @@ import {
 	Link as ChakraLink,
 	Flex,
 	ListItem,
+	Tab,
+	TabList,
+	Tabs,
+	transition,
 	UnorderedList,
 } from "@chakra-ui/react";
 import { Route, Link as RouterLink, Routes } from "react-router-dom";
@@ -14,13 +18,10 @@ import HowItWorks from "../../pages-components/howItWorks";
 import About from "../../pages-components/about";
 import Resources from "../../pages-components/resources";
 import { useState } from "react";
+import NavTabModal from "./nav-tabs-modal";
 
 export default function NavBar() {
 	const [isNavListShown, setIsNavListShown] = useState(false);
-
-	function handleShowMobileNavBar() {
-		setIsNavListShown((prevState) => !prevState);
-	}
 
 	return (
 		<>
@@ -33,8 +34,8 @@ export default function NavBar() {
 				width="100%"
 				alignItems="center"
 				justifyContent={{
-					base: "space-between",
-					sm: "center",
+					base: "flex-start",
+					md: "center",
 				}}
 				paddingX="8"
 				paddingY="2"
@@ -42,10 +43,16 @@ export default function NavBar() {
 				zIndex={100}>
 				<Box>
 					<Button
-						onClick={handleShowMobileNavBar}
+						position={"relative"}
+						zIndex={200}
+						onClick={(event) => {
+							// event bubbling causes the modal to close immediately due our setup, so stop it
+							event.stopPropagation();
+							setIsNavListShown((prevState) => !prevState);
+						}}
 						display={{
 							base: "inline",
-							sm: "none",
+							smm: "none",
 						}}
 						height="unset"
 						padding=".5rem 1rem"
@@ -57,23 +64,23 @@ export default function NavBar() {
 						)}
 					</Button>
 
-					<UnorderedList
+					{/* <UnorderedList
 						transition="all 0.5s ease-in-out"
 						position={{
 							base: "absolute",
-							sm: "unset",
+							smm: "unset",
 						}}
 						top="70%"
 						left={0}
 						opacity={{
 							base: isNavListShown ? "1" : "0",
-							sm: "1",
+							smm: "1",
 						}}
 						transform={{
 							base: isNavListShown
 								? "translateX(0)"
 								: "translateX(-100%)",
-							sm: "translateX(0)",
+							smm: "translateX(0)",
 						}}
 						listStyleType="none"
 						padding="0"
@@ -81,7 +88,7 @@ export default function NavBar() {
 						<Flex
 							flexDirection={{
 								base: "column",
-								sm: "row",
+								smm: "row",
 							}}>
 							<ListItem>
 								<ChakraLink as={RouterLink} to="/solutions">
@@ -107,10 +114,28 @@ export default function NavBar() {
 								</ChakraLink>
 							</ListItem>
 						</Flex>
-					</UnorderedList>
+					</UnorderedList> */}
+
+					{/* Tabs for site navigation */}
+					<NavTabModal
+						isNavListShown={isNavListShown}
+						RouterLink={RouterLink}
+						setIsNavListShown={setIsNavListShown}
+					/>
 				</Box>
 
-				<ChakraLink variant="primary">Get Started</ChakraLink>
+				<ChakraLink
+					variant="primary"
+					position="absolute"
+					top="50%"
+					right={8}
+					transform="translate(0, -50%)"
+					transition=" all .25s ease-in-out"
+					_hover={{
+						transform: "scale(1.1) translate(0, -50%)",
+					}}>
+					Get Started
+				</ChakraLink>
 			</Flex>
 
 			{/* Routers from React router */}

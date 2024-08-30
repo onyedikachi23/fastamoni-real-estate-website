@@ -3,6 +3,7 @@
 import "@fontsource-variable/inter";
 import { extendTheme } from "@chakra-ui/react";
 import { Global } from "@emotion/react";
+import base from "@emotion/styled/base";
 
 const themes = {
 	colors: {
@@ -40,10 +41,20 @@ const themes = {
 	lineHeights: {
 		texts: {
 			primary: "1.45",
+			primaryXL: "1.6"
 		},
 	},
 	spaces: {
 		sm: "8px",
+	},
+	breakpoints: {
+		base: "0em", // 0px
+		sm: "30em", // ~480px. em is a relative unit and is dependant on the font size.
+		smm: "40em", // 640px
+		md: "48em", // ~768px
+		lg: "62em", // ~992px
+		xl: "80em", // ~1280px
+		"2xl": "96em", // ~1536px
 	},
 	components: {
 		Link: {
