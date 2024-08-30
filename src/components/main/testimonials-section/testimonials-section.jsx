@@ -3,7 +3,7 @@
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import SlideListsSwiper from "../../slide-lists-swiper/slide-lists-swiper";
 import TestimonialItem from "./testimonial-item";
-import testimonialsData from "../../../assets/data/testimonials";
+import testimonialsData from "../../../data/testimonials";
 
 export default function TestimonialsSection() {
 	return (

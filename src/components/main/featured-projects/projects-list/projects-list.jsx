@@ -15,7 +15,7 @@ import {
 	Image,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import projectsData from "../../../../assets/data/projects";
+import projectsData from "../../../../data/projects";
 
 export default function ProjectsList({ noOfProjects }) {
 	const [projects, setProjects] = useState(null);

@@ -8,7 +8,7 @@ export default function Header() {
 	return (
 		<Box
 			as="header"
-			bgImage="url('src/assets/images/hero-img-mansion-banner.png')
+			bgImage="url('/assets/images/hero-img-mansion-banner.png')
 			"
 			bgSize="cover"
 			bgColor="hsla(0,0%,0%,0.6)"
