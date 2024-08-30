@@ -19,10 +19,21 @@ export default function EstateProject({ bgImgUrl }) {
 			borderRadius="xl">
 			{/* estate project header and description */}
 			<Flex direction="column" gap={2} color="white.100">
-				<Heading as="h4" fontWeight="500">
+				<Heading
+					as="h4"
+					fontWeight="500"
+					fontSize={{
+						base: "2xl",
+						smm: "3xl",
+					}}>
 					PrimewaterView Limited
 				</Heading>
-				<Text as="p">
+				<Text
+					as="p"
+					fontSize={{
+						base: "sm",
+						sm: "unset",
+					}}>
 					Specializing in high-end residential properties,
 					PrimewaterView Limited has established itself as a leader in
 					luxury living.
