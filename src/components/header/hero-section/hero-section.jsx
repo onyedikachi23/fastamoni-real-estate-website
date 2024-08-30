@@ -5,8 +5,8 @@ import { Box, Heading, Link as ChakraLink, Text } from "@chakra-ui/react";
 export default function HeroSection() {
 	return (
 		<Box
-			paddingBottom="12"
-			paddingTop="20"
+			paddingBottom="clamp(5rem, 40%, 12rem)"
+			paddingTop="clamp(5rem, 40%, 10rem)"
 			paddingX="8"
 			bgColor="hsla(0, 0%, 0%, .6)">
 			<Heading as="h1" marginBottom="2" color="hero" maxWidth="760px">
