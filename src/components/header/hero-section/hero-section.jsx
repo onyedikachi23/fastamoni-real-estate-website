@@ -40,7 +40,7 @@ export default function HeroSection() {
 				fontSize="12"
 				_hover={{
 					bgColor: "blue.100",
-					transform: `scale(1.2)`,
+					transform: "scale(1.2)",
 					fontWeight: "bold",
 					border: "none",
 				}}>

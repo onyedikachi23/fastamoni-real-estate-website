@@ -18,7 +18,7 @@ export default function Footer() {
 					as="span"
 					color="hsla(216, 45%, 98%, 1)"
 					fontSize="texts.primary">
-					CONVINCED
+					CONVINCED?
 				</Text>
 
 				<Heading as="h2" color="white.100">
