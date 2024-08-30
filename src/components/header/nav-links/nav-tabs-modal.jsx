@@ -48,7 +48,7 @@ export default function NavTabModal({
 				smm: "unset",
 			}}
 			height={{
-				base: "100vw",
+				base: "100vh",
 				smm: "unset",
 			}}
 			transition="all 0.5s ease-in-out"
