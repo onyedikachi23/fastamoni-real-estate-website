@@ -11,7 +11,7 @@ import {
 
 export default function TestimonialItem({ clientName, title, comment }) {
 	return (
-		<Box>
+		<Box maxHeight="365px" overflow="scroll">
 			{/* testiomonial card */}
 			<Card
 				variant="unstyled"

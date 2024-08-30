@@ -7,7 +7,7 @@ import testimonialsData from "../../../data/testimonials";
 
 export default function TestimonialsSection() {
 	return (
-		<Flex direction="column" gap={8}>
+		<Flex direction="column" gap={8} >
 			{/* section heading and description */}
 			<Flex gap="2" direction="column" textAlign="center">
 				<Heading
