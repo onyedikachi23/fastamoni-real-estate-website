@@ -4,6 +4,7 @@ import { Box } from "@chakra-ui/react";
 import "./App.css";
 import Header from "./components/header/header";
 import MainSection from "./components/main/main-section";
+import Footer from "./components/footer/footer";
 
 function App() {
 	return (
@@ -13,6 +14,9 @@ function App() {
 
 			{/* main content */}
 			<MainSection />
+
+			{/* footer section */}
+			<Footer />
 		</Box>
 	);
 }

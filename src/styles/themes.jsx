@@ -12,11 +12,20 @@ const themes = {
 			75: "#F7F9FC",
 			navGray: "#7D7F88",
 			black: "hsla(160, 82%, 2%, 1)",
+			light: "hsla(0, 0%, 96%, 0.64)",
+			opacityLight: "hsla(0, 0%, 17%, 0.6)",
 		},
 		blue: {
 			100: "#007BFF",
+			900: "hsla(234, 45%, 12%, 1)",
 		},
 		hero: "#F2F2F2",
+		sectionHeading: "hsla(0, 0%, 0%, 1)",
+		sectionDescription: "hsla(219, 13%, 46%, 1)",
+		white: {
+			100: "hsla(0, 0%, 100%, 1)",
+			200: "hsla(0, 0%, 97%, 1)",
+		},
 	},
 	fonts: {
 		// h1: "PP Neue Montreal",
@@ -49,6 +58,7 @@ const themes = {
 					fontFamily: `"Inter", sans-serif`,
 					bgColor: "blue.100",
 					borderRadius: "8px",
+					width: "fit-content",
 				},
 				outline: {
 					border: "1px solid white",

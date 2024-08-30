@@ -20,14 +20,14 @@ export default function FeaturedProjects() {
 			<Flex direction="column" gap="3">
 				{/* sectiion description */}
 				<Flex direction="column" gap="2">
-					<Heading as="h2" fontWeight="500">
+					<Heading as="h2" fontWeight="500" color="sectionHeading">
 						Featured projects
 					</Heading>
 
 					<Text
 						as="p"
 						fontSize="texts.primary"
-						color="hsla(219, 13%, 46%, 1)"
+						color="sectionDescription"
 						lineHeight="texts.primary">
 						Discover your dream property from your favorite
 						developers. Explore our premium listings and find the

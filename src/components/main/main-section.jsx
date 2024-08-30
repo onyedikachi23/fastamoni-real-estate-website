@@ -4,6 +4,7 @@ import { Box, Flex } from "@chakra-ui/react";
 import PropertiesSearch from "./properties-locations-search/properties-search";
 import FeaturedProjects from "./featured-projects/featured-projects";
 import RealEstateDevs from "./estate-developers/estate-developers";
+import TestimonialsSection from "./testimonials-section/testimonials-section";
 
 export default function MainSection() {
 	return (
@@ -16,6 +17,9 @@ export default function MainSection() {
 
 			{/* Real Estate Devs Section */}
 			<RealEstateDevs />
+
+			{/* clients testiomoials section */}
+			<TestimonialsSection />
 		</Flex>
 	);
 }

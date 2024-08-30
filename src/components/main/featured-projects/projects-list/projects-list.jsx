@@ -90,7 +90,8 @@ export default function ProjectsList({ noOfProjects }) {
 													alignItems="center">
 													<Heading
 														as="h4"
-														fontSize="texts.primary">
+														fontSize="texts.primary"
+														color="hsla(0, 0%, 17%, 1)">
 														{project.title}
 													</Heading>
 													<Text
