@@ -10,13 +10,23 @@ export default function TestimonialsSection() {
 		<Flex direction="column" gap={8}>
 			{/* section heading and description */}
 			<Flex gap="2" direction="column" textAlign="center">
-				<Heading as="h2" fontWeight="500" color="sectionHeading">
+				<Heading
+					as="h2"
+					fontWeight="500"
+					color="sectionHeading"
+					fontSize={{
+						base: "2xl",
+						smm: "3xl",
+					}}>
 					Testimonials
 				</Heading>
 				<Text
 					as="p"
 					color="sectionDescription"
-					fontSize="texts.primary">
+					fontSize={{
+						base: "sm",
+						sm: "unset",
+					}}>
 					Here's what our clients have to say about their real estate
 					experiences with us.
 				</Text>
