@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 
-export default function HowItWorks({ setIsNavBarShown }) {
+export default function Home({ setIsNavBarShown }) {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	useEffect(() => {
@@ -44,7 +44,7 @@ export default function HowItWorks({ setIsNavBarShown }) {
 				<ModalContent position="relative">
 					<ModalHeader>
 						<Heading as="h2" color="white">
-							&#34;How it works&#34; page
+							Returned to home
 						</Heading>
 					</ModalHeader>
 					<Button
@@ -70,7 +70,7 @@ export default function HowItWorks({ setIsNavBarShown }) {
 
 					<ModalBody>
 						<Text as="p" color="white">
-							Coming soon!
+							Click anywhere to continue.
 						</Text>
 					</ModalBody>
 				</ModalContent>
@@ -78,3 +78,7 @@ export default function HowItWorks({ setIsNavBarShown }) {
 		</Box>
 	);
 }
+import { position } from "@chakra-ui/react";
+import base from "@emotion/styled/base";
+import { transform } from "framer-motion";
+import React from "react";

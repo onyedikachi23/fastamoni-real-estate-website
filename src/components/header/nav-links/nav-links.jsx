@@ -1,17 +1,6 @@
 /** @format */
 
-import {
-	Box,
-	Button,
-	Link as ChakraLink,
-	Flex,
-	ListItem,
-	Tab,
-	TabList,
-	Tabs,
-	transition,
-	UnorderedList,
-} from "@chakra-ui/react";
+import { Box, Button, Link as ChakraLink, Flex } from "@chakra-ui/react";
 import { Route, Link as RouterLink, Routes } from "react-router-dom";
 import Solutions from "../../pages-components/solutions";
 import HowItWorks from "../../pages-components/howItWorks";
@@ -19,6 +8,7 @@ import About from "../../pages-components/about";
 import Resources from "../../pages-components/resources";
 import { useState } from "react";
 import NavTabModal from "./nav-tabs-modal";
+import Home from "../../pages-components/home";
 
 export default function NavBar() {
 	const [isNavListShown, setIsNavListShown] = useState(false);
@@ -44,7 +34,7 @@ export default function NavBar() {
 				<Box>
 					<Button
 						position={"relative"}
-						zIndex={200}
+						zIndex={100}
 						onClick={(event) => {
 							// event bubbling causes the modal to close immediately due our setup, so stop it
 							event.stopPropagation();
@@ -140,11 +130,24 @@ export default function NavBar() {
 
 			{/* Routers from React router */}
 			<Routes>
-				<Route path="/solutions" element={<Solutions />} />
-				<Route path="/how-it-works" element={<HowItWorks />} />
-				<Route path="/about" element={<About />} />
-				<Route path="/resources" element={<Resources />} />
-				{/* <Route path="/" exact element={<Header />} /> */}
+				<Route
+					path="/solutions"
+					element={<Solutions setIsNavBarShown={setIsNavListShown} />}
+				/>
+				<Route
+					path="/how-it-works"
+					element={
+						<HowItWorks setIsNavBarShown={setIsNavListShown} />
+					}
+				/>
+				<Route
+					path="/about"
+					element={<About setIsNavBarShown={setIsNavListShown} />}
+				/>
+				<Route
+					path="/resources"
+					element={<Resources setIsNavBarShown={setIsNavListShown} />}
+				/>
 			</Routes>
 		</>
 	);

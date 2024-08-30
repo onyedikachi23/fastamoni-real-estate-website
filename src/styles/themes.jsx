@@ -1,9 +1,6 @@
 /** @format */
 
-import "@fontsource-variable/inter";
 import { extendTheme } from "@chakra-ui/react";
-import { Global } from "@emotion/react";
-import base from "@emotion/styled/base";
 
 const themes = {
 	colors: {
@@ -41,7 +38,7 @@ const themes = {
 	lineHeights: {
 		texts: {
 			primary: "1.45",
-			primaryXL: "1.6"
+			primaryXL: "1.6",
 		},
 	},
 	spaces: {
@@ -82,17 +79,5 @@ const themes = {
 };
 
 const customTheme = extendTheme(themes);
-
-// for fonts with @font-face
-export const Font = () => (
-	<Global
-		styles={`
-	@font-face {
-        font-family: 'PP Neue Montreal';
-		src: url('src/assets/fonts/pp-neue-montreal-cufonfonts-webfont/ppneuemontreal-medium.woff') format('woff');
-		}
-	`}
-	/>
-);
 
 export default customTheme;
