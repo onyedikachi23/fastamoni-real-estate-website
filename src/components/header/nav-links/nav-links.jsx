@@ -6,18 +6,28 @@ import Solutions from "../../pages-components/solutions";
 import HowItWorks from "../../pages-components/howItWorks";
 import About from "../../pages-components/about";
 import Resources from "../../pages-components/resources";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import NavTabModal from "./nav-tabs-modal";
 import Home from "../../pages-components/home";
+import useIsElementHeightScrolled from "../../../custom-hooks/element-height-scrolled/element-height-scrolled";
 
 export default function NavBar() {
 	const [isNavListShown, setIsNavListShown] = useState(false);
+	const [navBarElRendered, setNavBarElRendered] = useState(null);
+	const navBarRef = useRef(null);
+	const isNavBarHeightScrolled = useIsElementHeightScrolled(navBarElRendered);
+
+	// to handle navBarRef.current being null on first initialization of useIsElementHeightScrolled()
+	useEffect(() => {
+		setNavBarElRendered(navBarRef.current);
+	}, []);
 
 	return (
 		<>
 			{/* NavBar */}
 			<Flex
 				as="nav"
+				ref={navBarRef}
 				position="fixed"
 				top="0"
 				left="0"
@@ -111,6 +121,7 @@ export default function NavBar() {
 						isNavListShown={isNavListShown}
 						RouterLink={RouterLink}
 						setIsNavListShown={setIsNavListShown}
+						isNavBarHeightScrolled={isNavBarHeightScrolled}
 					/>
 				</Box>
 

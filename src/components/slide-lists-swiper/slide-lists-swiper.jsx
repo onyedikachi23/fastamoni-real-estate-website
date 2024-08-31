@@ -17,7 +17,7 @@ import {
 } from "swiper/modules";
 import { useEffect, useRef, useState } from "react";
 
-export default function SlideListsSwiper({ slides }) {
+export default function SlideListsSwiper({ slides, customBreakpoints }) {
 	const [currentNavBtn, setCurrentNavBtn] = useState("next");
 	const swiperRef = useRef(null);
 
@@ -53,10 +53,7 @@ export default function SlideListsSwiper({ slides }) {
 						slidesPerView: 2,
 						spaceBetween: 35,
 					},
-					1280: {
-						slidesPerView: 3,
-						spaceBetween: 45,
-					},
+					...(customBreakpoints ?? {}),
 					// 992: {
 					// 	slidesPerView: 4,
 					// 	spaceBetween: 55,

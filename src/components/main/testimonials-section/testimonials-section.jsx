@@ -7,7 +7,7 @@ import testimonialsData from "../../../data/testimonials";
 
 export default function TestimonialsSection() {
 	return (
-		<Flex direction="column" gap={8} >
+		<Flex direction="column" gap={8}>
 			{/* section heading and description */}
 			<Flex gap="2" direction="column" textAlign="center">
 				<Heading
@@ -35,6 +35,12 @@ export default function TestimonialsSection() {
 			{/* testimonials list */}
 			<Box>
 				<SlideListsSwiper
+					customBreakpoints={{
+						992: {
+							slidesPerView: 3,
+							spaceBetween: 45,
+						},
+					}}
 					slides={testimonialsData.map((testimonial, index) => (
 						<TestimonialItem key={index} {...testimonial} />
 					))}

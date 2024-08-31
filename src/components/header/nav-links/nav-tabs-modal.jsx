@@ -7,6 +7,7 @@ export default function NavTabModal({
 	isNavListShown,
 	setIsNavListShown,
 	RouterLink,
+	isNavBarHeightScrolled,
 }) {
 	const [selectedTab, setSelectedTab] = useState(null);
 	const modalRef = useRef(null);
@@ -18,10 +19,6 @@ export default function NavTabModal({
 				handleClickOutside(event);
 			});
 		}
-		// } else {
-		// 	// Remove the event listener when modal is closed
-		// 	window.removeEventListener("click", handleClickOutside);
-		// }
 
 		// Cleanup: Remove the event listener when component unmounts
 		return () => {
@@ -39,7 +36,11 @@ export default function NavTabModal({
 
 	return (
 		<Tabs
-			borderBottom="1px solid hsla(219, 33%, 17%, 1)"
+			borderBottom={{
+				smm: isNavBarHeightScrolled
+					? "1px solid hsla(219, 33%, 17%, 1)"
+					: "none",
+			}}
 			index={selectedTab}
 			onChange={(index) => setSelectedTab(index)}
 			variant="unstyled"
@@ -51,7 +52,7 @@ export default function NavTabModal({
 				base: "100vh",
 				smm: "unset",
 			}}
-			transition="all 0.5s ease-in-out"
+			transition="all 0.5s ease-in-out, border-bottom-width 0s linear"
 			opacity={{
 				base: isNavListShown ? "1" : "0",
 				smm: "1",
