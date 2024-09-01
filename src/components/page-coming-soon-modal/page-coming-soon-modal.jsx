@@ -14,13 +14,14 @@ import {
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 
-export default function Home({ setIsNavBarShown }) {
+export default function PageComingSoon({ setIsMobileNavBarShown, pageTitle }) {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	useEffect(() => {
 		// When the component mounts, open the modal
 		onOpen();
-		setIsNavBarShown(false);
+		setIsMobileNavBarShown(false);
+		console.log(pageTitle);
 
 		// close after 3s
 		const closeTimeout = setTimeout(() => {
@@ -30,7 +31,7 @@ export default function Home({ setIsNavBarShown }) {
 		return () => {
 			clearTimeout(closeTimeout);
 		};
-	}, [onOpen, onClose]);
+	}, [onOpen, onClose, setIsMobileNavBarShown, pageTitle]);
 
 	return (
 		<Box>
@@ -44,11 +45,13 @@ export default function Home({ setIsNavBarShown }) {
 				<ModalContent position="relative">
 					<ModalHeader>
 						<Heading as="h2" color="white">
-							Returned to home
+							{pageTitle}
 						</Heading>
 					</ModalHeader>
 					<Button
-						onClick={onClose}
+						onClick={() => {
+							onClose();
+						}}
 						position="absolute"
 						top="-1rem"
 						right={4}
@@ -70,7 +73,7 @@ export default function Home({ setIsNavBarShown }) {
 
 					<ModalBody>
 						<Text as="p" color="white">
-							Click anywhere to continue.
+							Coming soon!
 						</Text>
 					</ModalBody>
 				</ModalContent>
@@ -78,7 +81,6 @@ export default function Home({ setIsNavBarShown }) {
 		</Box>
 	);
 }
-import { position } from "@chakra-ui/react";
 import base from "@emotion/styled/base";
-import { transform } from "framer-motion";
+import { color, transform } from "framer-motion";
 import React from "react";

@@ -1,15 +1,11 @@
 /** @format */
 
 import { Box, Button, Link as ChakraLink, Flex } from "@chakra-ui/react";
-import { Route, Link as RouterLink, Routes } from "react-router-dom";
-import Solutions from "../../pages-components/solutions";
-import HowItWorks from "../../pages-components/howItWorks";
-import About from "../../pages-components/about";
-import Resources from "../../pages-components/resources";
 import { useEffect, useRef, useState } from "react";
-import NavTabModal from "./nav-tabs-modal";
-import Home from "../../pages-components/home";
+import { Route, Link as RouterLink, Routes } from "react-router-dom";
 import useIsElementHeightScrolled from "../../../custom-hooks/element-height-scrolled/element-height-scrolled";
+import PageComingSoon from "../../page-coming-soon-modal/page-coming-soon-modal";
+import NavTabModal from "./nav-tabs-modal";
 
 export default function NavBar() {
 	const [isNavListShown, setIsNavListShown] = useState(false);
@@ -64,58 +60,6 @@ export default function NavBar() {
 						)}
 					</Button>
 
-					{/* <UnorderedList
-						transition="all 0.5s ease-in-out"
-						position={{
-							base: "absolute",
-							smm: "unset",
-						}}
-						top="70%"
-						left={0}
-						opacity={{
-							base: isNavListShown ? "1" : "0",
-							smm: "1",
-						}}
-						transform={{
-							base: isNavListShown
-								? "translateX(0)"
-								: "translateX(-100%)",
-							smm: "translateX(0)",
-						}}
-						listStyleType="none"
-						padding="0"
-						margin={0}>
-						<Flex
-							flexDirection={{
-								base: "column",
-								smm: "row",
-							}}>
-							<ListItem>
-								<ChakraLink as={RouterLink} to="/solutions">
-									Solutions
-									<i className="ri-arrow-down-s-line"></i>
-								</ChakraLink>
-							</ListItem>
-							<ListItem>
-								<ChakraLink as={RouterLink} to="/how-it-works">
-									How it works.
-									<i className="ri-arrow-down-s-line"></i>
-								</ChakraLink>
-							</ListItem>
-							<ListItem>
-								<ChakraLink as={RouterLink} to="/about">
-									About
-									<i className="ri-arrow-down-s-line"></i>
-								</ChakraLink>
-							</ListItem>
-							<ListItem>
-								<ChakraLink as={RouterLink} to="/resources">
-									Resources
-								</ChakraLink>
-							</ListItem>
-						</Flex>
-					</UnorderedList> */}
-
 					{/* Tabs for site navigation */}
 					<NavTabModal
 						isNavListShown={isNavListShown}
@@ -137,29 +81,49 @@ export default function NavBar() {
 					}}>
 					Get Started
 				</ChakraLink>
-			</Flex>
 
-			{/* Routers from React router */}
-			<Routes>
-				<Route
-					path="/solutions"
-					element={<Solutions setIsNavBarShown={setIsNavListShown} />}
-				/>
-				<Route
-					path="/how-it-works"
-					element={
-						<HowItWorks setIsNavBarShown={setIsNavListShown} />
-					}
-				/>
-				<Route
-					path="/about"
-					element={<About setIsNavBarShown={setIsNavListShown} />}
-				/>
-				<Route
-					path="/resources"
-					element={<Resources setIsNavBarShown={setIsNavListShown} />}
-				/>
-			</Routes>
+				{/* Routers from React router */}
+				<Routes>
+					<Route path="/">
+						<Route
+							path="/solutions"
+							element={
+								<PageComingSoon
+									setIsMobileNavBarShown={setIsNavListShown}
+									pageTitle="Solutions page"
+								/>
+							}
+						/>
+						<Route
+							path="/how-it-works"
+							element={
+								<PageComingSoon
+									setIsMobileNavBarShown={setIsNavListShown}
+									pageTitle={`"How it works" page`}
+								/>
+							}
+						/>
+						<Route
+							path="/about"
+							element={
+								<PageComingSoon
+									setIsMobileNavBarShown={setIsNavListShown}
+									pageTitle="About page"
+								/>
+							}
+						/>
+						<Route
+							path="/resources"
+							element={
+								<PageComingSoon
+									setIsMobileNavBarShown={setIsNavListShown}
+									pageTitle="Resources page"
+								/>
+							}
+						/>
+					</Route>
+				</Routes>
+			</Flex>
 		</>
 	);
 }

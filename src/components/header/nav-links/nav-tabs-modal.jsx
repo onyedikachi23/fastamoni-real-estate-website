@@ -88,10 +88,13 @@ export default function NavTabModal({
 					smm: "row",
 				}}>
 				<Tab
-					borderBottom={selectedTab === 0 && "3px solid"}
-					borderBottomColor="blue.100"
+					padding={0}
 					transition="border-bottom-color 0.25s ease-in-out">
 					<ChakraLink
+						paddingX={4}
+						paddingY={2}
+						borderBottomColor="blue.100"
+						borderBottom={selectedTab === 0 && "3px solid"}
 						_hover={{
 							textDecoration: "none",
 						}}
@@ -103,10 +106,13 @@ export default function NavTabModal({
 				</Tab>
 
 				<Tab
-					borderBottom={selectedTab === 1 && "3px solid"}
-					borderBottomColor="blue.100"
+					padding={0}
 					transition="border-bottom-color 0.25s ease-in-out">
 					<ChakraLink
+						paddingX={4}
+						paddingY={2}
+						borderBottomColor="blue.100"
+						borderBottom={selectedTab === 1 && "3px solid"}
 						_hover={{
 							textDecoration: "none",
 						}}
@@ -118,10 +124,13 @@ export default function NavTabModal({
 				</Tab>
 
 				<Tab
-					borderBottom={selectedTab === 2 && "3px solid"}
-					borderBottomColor="blue.100"
+					padding={0}
 					transition="border-bottom-color 0.25s ease-in-out">
 					<ChakraLink
+						paddingX={4}
+						paddingY={2}
+						borderBottomColor="blue.100"
+						borderBottom={selectedTab === 2 && "3px solid"}
 						_hover={{
 							textDecoration: "none",
 						}}
@@ -133,10 +142,13 @@ export default function NavTabModal({
 				</Tab>
 
 				<Tab
-					borderBottom={selectedTab === 3 && "3px solid"}
-					borderBottomColor="blue.100"
+					padding={0}
 					transition="border-bottom-color 0.25s ease-in-out">
 					<ChakraLink
+						paddingX={4}
+						paddingY={2}
+						borderBottomColor="blue.100"
+						borderBottom={selectedTab === 3 && "3px solid"}
 						_hover={{
 							textDecoration: "none",
 						}}
