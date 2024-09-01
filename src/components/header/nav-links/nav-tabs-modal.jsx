@@ -1,12 +1,12 @@
 /** @format */
 
-import { Tab, TabList, Tabs, Link as ChakraLink } from "@chakra-ui/react";
+import { Tab, TabList, Tabs } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export default function NavTabModal({
 	isNavListShown,
 	setIsNavListShown,
-	RouterLink,
 	isNavBarHeightScrolled,
 }) {
 	const [selectedTab, setSelectedTab] = useState(null);
@@ -71,6 +71,7 @@ export default function NavTabModal({
 			}}
 			top="0"
 			left={0}>
+			
 			{/* nav headers */}
 			<TabList
 				ref={modalRef}
@@ -90,72 +91,60 @@ export default function NavTabModal({
 				<Tab
 					padding={0}
 					transition="border-bottom-color 0.25s ease-in-out">
-					<ChakraLink
-						paddingX={4}
-						paddingY={2}
-						borderBottomColor="blue.100"
-						borderBottom={selectedTab === 0 && "3px solid"}
-						_hover={{
-							textDecoration: "none",
-						}}
-						as={RouterLink}
+					<NavLink
+						className={({ isActive }) =>
+							isActive || selectedTab === 0
+								? "active nav-link"
+								: "nav-link"
+						}
 						to="/solutions">
 						Solutions
 						<i className="ri-arrow-down-s-line"></i>
-					</ChakraLink>
+					</NavLink>
 				</Tab>
 
 				<Tab
 					padding={0}
 					transition="border-bottom-color 0.25s ease-in-out">
-					<ChakraLink
-						paddingX={4}
-						paddingY={2}
-						borderBottomColor="blue.100"
-						borderBottom={selectedTab === 1 && "3px solid"}
-						_hover={{
-							textDecoration: "none",
-						}}
-						as={RouterLink}
+					<NavLink
+						className={({ isActive }) =>
+							isActive || selectedTab === 1
+								? "active nav-link"
+								: "nav-link"
+						}
 						to="/how-it-works">
 						How it works
 						<i className="ri-arrow-down-s-line"></i>
-					</ChakraLink>
+					</NavLink>
 				</Tab>
 
 				<Tab
 					padding={0}
 					transition="border-bottom-color 0.25s ease-in-out">
-					<ChakraLink
-						paddingX={4}
-						paddingY={2}
-						borderBottomColor="blue.100"
-						borderBottom={selectedTab === 2 && "3px solid"}
-						_hover={{
-							textDecoration: "none",
-						}}
-						as={RouterLink}
+					<NavLink
+						className={({ isActive }) =>
+							isActive || selectedTab === 2
+								? "active nav-link"
+								: "nav-link"
+						}
 						to="/about">
 						About
 						<i className="ri-arrow-down-s-line"></i>
-					</ChakraLink>
+					</NavLink>
 				</Tab>
 
 				<Tab
 					padding={0}
 					transition="border-bottom-color 0.25s ease-in-out">
-					<ChakraLink
-						paddingX={4}
-						paddingY={2}
-						borderBottomColor="blue.100"
-						borderBottom={selectedTab === 3 && "3px solid"}
-						_hover={{
-							textDecoration: "none",
-						}}
-						as={RouterLink}
+					<NavLink
+						className={({ isActive }) =>
+							isActive || selectedTab === 3
+								? "active nav-link"
+								: "nav-link"
+						}
 						to="/resources">
 						Resources
-					</ChakraLink>
+					</NavLink>
 				</Tab>
 			</TabList>
 		</Tabs>

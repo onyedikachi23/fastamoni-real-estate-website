@@ -1,5 +1,13 @@
 /** @format */
 
-option {
-	cursor: pointer;
+.nav-link {
+	padding: 0.5rem 1rem;
+}
+
+.nav-link.active {
+	border-bottom: 3px solid #007bff;
+}
+
+.nav-link:hover {
+	text-decoration: none;
 }

@@ -26,7 +26,6 @@ export default function ProjectsList({ noOfProjects }) {
 
 	function fetchProjects() {
 		const fetchedProjects = projectsData;
-		console.log(fetchedProjects.length);
 
 		setProjects((prevData) => {
 			if (prevData) {
@@ -48,19 +47,21 @@ export default function ProjectsList({ noOfProjects }) {
 			projects?.length === noOfProjects
 		) {
 			setIsLoadMoreActive(false);
+			// don't fetch more projects
+			return;
 		}
-	}, [projectsCount, noOfProjects, projects?.length]);
 
-	// fetch projects on initial render and when projectsCount increases
-	useEffect(() => {
-		//
+		// number of projects shown, shouldn't exceed projectsCount
 		if (projects?.length >= projectsCount) {
 			return;
 		}
+
+		// when all is fine, fetch more projects
+		// fetch projects on initial render and when projectsCount increases
 		fetchProjects();
-		// runCount++;
-		// console.log(runCount);
-	}, [projectsCount]);
+	}, [projectsCount, noOfProjects, projects?.length]);
+
+	console.log(projects?.length);
 
 	return (
 		<Flex

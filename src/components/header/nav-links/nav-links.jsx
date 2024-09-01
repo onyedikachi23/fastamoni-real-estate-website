@@ -2,7 +2,7 @@
 
 import { Box, Button, Link as ChakraLink, Flex } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
-import { Route, Link as RouterLink, Routes } from "react-router-dom";
+import { Route, NavLink as RouterLink, Routes } from "react-router-dom";
 import useIsElementHeightScrolled from "../../../custom-hooks/element-height-scrolled/element-height-scrolled";
 import PageComingSoon from "../../page-coming-soon-modal/page-coming-soon-modal";
 import NavTabModal from "./nav-tabs-modal";
@@ -63,7 +63,6 @@ export default function NavBar() {
 					{/* Tabs for site navigation */}
 					<NavTabModal
 						isNavListShown={isNavListShown}
-						RouterLink={RouterLink}
 						setIsNavListShown={setIsNavListShown}
 						isNavBarHeightScrolled={isNavBarHeightScrolled}
 					/>
