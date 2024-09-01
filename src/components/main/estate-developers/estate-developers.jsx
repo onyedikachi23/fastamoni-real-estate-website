@@ -13,7 +13,10 @@ export default function RealEstateDevs() {
 				</Heading>
 				<Text
 					as="p"
-					fontSize="texts.primary"
+					fontSize={{
+						base: "texts.primary",
+						smm: "md",
+					}}
 					color="sectionDescription">
 					Discover projects from leading developers in Lagos, offering
 					exceptional properties tailored to your lifestyle and
