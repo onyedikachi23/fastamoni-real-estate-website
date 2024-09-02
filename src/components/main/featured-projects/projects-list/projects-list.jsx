@@ -152,7 +152,10 @@ export default function ProjectsList({
 															alignItems="center">
 															<Heading
 																as="h4"
-																fontSize="texts.primary"
+																fontSize={{
+																	base: "texts.primary",
+																	smm: "md",
+																}}
 																color="hsla(0, 0%, 17%, 1)">
 																{
 																	project.projectLocation
@@ -174,7 +177,10 @@ export default function ProjectsList({
 													</CardHeader>
 
 													<CardBody
-														fontSize="texts.secondary"
+														fontSize={{
+															base: "texts.secondary",
+															smm: "texts.primary",
+														}}
 														marginBottom={1}>
 														<Flex
 															color="blue.100"
@@ -207,6 +213,7 @@ export default function ProjectsList({
 																	{
 																		project
 																			.projectDescriptionsItem
+																			.houseDescription
 																			.bathRooms
 																	}{" "}
 																	baths
@@ -224,6 +231,7 @@ export default function ProjectsList({
 																	{
 																		project
 																			.projectDescriptionsItem
+																			.houseDescription
 																			.bedRooms
 																	}{" "}
 																	beds

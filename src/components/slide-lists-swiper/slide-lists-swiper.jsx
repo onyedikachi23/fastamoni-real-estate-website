@@ -46,7 +46,7 @@ export default function SlideListsSwiper({ slides, customBreakpoints }) {
 	}
 
 	return (
-		<Box>
+		<Box overflow="auto">
 			<Swiper
 				breakpoints={{
 					768: {
