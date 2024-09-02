@@ -50,7 +50,7 @@ export default function ProjectsList({
 	function isProjectsCountWithInRange(rangeType) {
 		switch (rangeType) {
 			case "projectsCount":
-				return projectsCount <= noOfProjects;
+				return projectsCount < noOfProjects;
 
 			case "projects.length":
 				if (projects) {
