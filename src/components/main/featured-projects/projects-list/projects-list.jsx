@@ -18,8 +18,6 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { ShowerIcon } from "../../../../svg-icons/icons";
-// to add a custom scrollbar to project lists
-import "simplebar-react/dist/simplebar.min.css";
 
 export default function ProjectsList({
 	noOfProjects,
