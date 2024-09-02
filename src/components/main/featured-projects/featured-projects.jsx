@@ -5,16 +5,61 @@ import {
 	Box,
 	Flex,
 	Heading,
+	ListItem,
 	Tab,
 	TabList,
 	TabPanel,
 	TabPanels,
 	Tabs,
 	Text,
+	UnorderedList,
 } from "@chakra-ui/react";
+import { useRef } from "react";
+import projectsData from "../../../data/projects.js";
+import { getRandomInt } from "../../../helper-functions/helper-functions.js";
 import ProjectsList from "./projects-list/projects-list.jsx";
 
 export default function FeaturedProjects() {
+	// to generate dummy numbers of projects at projectsLocations in any page visit
+	const projectsNumbersInprojectsLocationsRef = useRef(
+		generateRandomProjectsNumbers()
+	);
+
+	// generate random number of projects at projectsLocations
+	function generateRandomProjectsNumbers() {
+		// total number of projectsLocations = projectsData.projectsLocations.length
+		const projectsNumbersList = [];
+		for (let i = 0; i < projectsData.projectsLocations.length; i++) {
+			const projectsNumber = getRandomInt(100);
+			projectsNumbersList.push(projectsNumber);
+		}
+		return projectsNumbersList;
+	}
+
+	function numbersSum(numArray) {
+		const sum = numArray.reduce((a, b) => a + b);
+		return sum;
+	}
+
+	// format the value for the projectsDataItem prop in ProjectsList component where each object in the projectsDescriptions array is paired with the projectsLocation string into separate objects, then listed into an array of objects
+	function formatProjectsDataForListing(projectLocation) {
+		const result = projectsData.projectsDescriptions.map((project) => ({
+			projectLocation,
+			projectDescriptionsItem: project,
+		}));
+
+		/* 
+		expected output structure example:
+		[
+  			{ projectsLocation: "YourprojectsLocationString", projectDescriptionsItem: { title: "Project 1", description: "Description 1" } },
+  			{ projectsLocation: "YourprojectsLocationString", projectDescriptionsItem: { title: "Project 2", description: "Description 2" } },
+  			// More objects as needed
+		]
+		*/
+
+		return result;
+	}
+
 	return (
 		<Box as="section">
 			<Flex
@@ -67,14 +112,10 @@ export default function FeaturedProjects() {
 						gap={{
 							base: "2",
 						}}
-						overflow="scroll"
+						overflow="auto"
 						paddingBottom={4}>
 						<Tab paddingX={2} gap={2} whiteSpace="nowrap">
 							<Text as="span">All</Text>
-						</Tab>
-
-						<Tab paddingX={2} gap={2} whiteSpace="nowrap">
-							<Text as="span">Lekki Gardens</Text>
 							<Badge
 								borderRadius="12px"
 								paddingX="2"
@@ -85,73 +126,117 @@ export default function FeaturedProjects() {
 									base: "texts.tabs",
 									smm: "md",
 								}}>
-								80
+								{numbersSum(
+									projectsNumbersInprojectsLocationsRef.current
+								)}
 							</Badge>
 						</Tab>
 
-						<Tab paddingX={2} gap={2} whiteSpace="nowrap">
-							<Text as="span">Ocean lake</Text>
-							<Badge
-								borderRadius="12px"
-								paddingX="2"
-								bgColor="hsla(219, 13%, 46%, 1)"
-								color="white"
-								fontWeight="light"
-								fontSize={{
-									base: "texts.tabs",
-									smm: "md",
-								}}>
-								10
-							</Badge>
-						</Tab>
-
-						<Tab paddingX={2} gap={2} whiteSpace="nowrap">
-							<Text as="span">Swiss village</Text>
-						</Tab>
-
-						<Tab paddingX={2} gap={2} whiteSpace="nowrap">
-							<Text as="span">Banna Max express</Text>
-							<Badge
-								borderRadius="12px"
-								paddingX="2"
-								bgColor="hsla(219, 13%, 46%, 1)"
-								color="white"
-								fontWeight="light"
-								fontSize={{
-									base: "texts.tabs",
-									// smm: "md",
-								}}>
-								0
-							</Badge>
-						</Tab>
+						{/* map out other tabs from imported projectsData */}
+						{projectsData.projectsLocations.map(
+							(projectLocation, index) => (
+								<Tab
+									key={index}
+									paddingX={2}
+									gap={2}
+									whiteSpace="nowrap">
+									<Text as="span">{projectLocation}</Text>
+									<Badge
+										borderRadius="12px"
+										paddingX="2"
+										bgColor="hsla(219, 13%, 46%, 1)"
+										color="white"
+										fontWeight="light"
+										fontSize={{
+											base: "texts.tabs",
+											smm: "md",
+										}}>
+										{
+											projectsNumbersInprojectsLocationsRef
+												.current[index]
+										}
+									</Badge>
+								</Tab>
+							)
+						)}
 					</TabList>
 
 					{/* Tab Items - Projects gallery */}
 					<TabPanels>
 						<TabPanel>
-							{/* For All */}
-							<ProjectsList noOfProjects={100} />
+							{/* For All tab 
+							Each projectsLocation's project would be listed here in ascending order
+							*/}
+							<UnorderedList
+								listStyleType="none"
+								padding="0"
+								margin={0}
+								maxHeight="68rem"
+								overflow="auto"
+								paddingX={4}>
+								<Flex
+									gap={14}
+									direction="column"
+									alignItems="center"
+									justifyContent="center">
+									{projectsData.projectsLocations.map(
+										(projectLocation, index) => (
+											<ListItem key={index}>
+												<Flex
+													paddingBottom={14}
+													borderBottom="1px solid #7D7F88"
+													direction="column"
+													justifyContent="center"
+													gap={{
+														base: 6,
+														smm: 8,
+													}}>
+													<Heading
+														alignSelf="center"
+														as="h3"
+														fontSize={{
+															base: "xl",
+															smm: "2xl",
+														}}
+														color="hsla(0, 0%, 17%, 1)">
+														{projectLocation}
+													</Heading>
+
+													<ProjectsList
+														noOfProjects={
+															projectsNumbersInprojectsLocationsRef
+																.current[index]
+														}
+														projectsDataItem={formatProjectsDataForListing(
+															projectLocation
+														)}
+														maxHeight="none"
+													/>
+												</Flex>
+											</ListItem>
+										)
+									)}
+								</Flex>
+							</UnorderedList>
 						</TabPanel>
 
-						<TabPanel>
-							{/* For Lekki */}
-							<ProjectsList noOfProjects={80} />
-						</TabPanel>
-
-						<TabPanel>
-							{/* For ocean lake */}
-							<ProjectsList noOfProjects={10} />
-						</TabPanel>
-
-						<TabPanel>
-							{/* For swiss village */}
-							<ProjectsList noOfProjects={0} />
-						</TabPanel>
-
-						<TabPanel>
-							{/* For Banana Max */}
-							<ProjectsList noOfProjects={0} />
-						</TabPanel>
+						{/* panel for each projectsLocation tab */}
+						{projectsData.projectsLocations.map(
+							(projectLocation, index) => (
+								<TabPanel key={index}>
+									<ProjectsList
+										noOfProjects={
+											projectsNumbersInprojectsLocationsRef
+												.current[index]
+										}
+										projectsDataItem={formatProjectsDataForListing(
+											projectLocation
+										)}
+										maxHeight="68rem"
+									/>
+								</TabPanel>
+							)
+						)}
 					</TabPanels>
 				</Tabs>
 			</Flex>

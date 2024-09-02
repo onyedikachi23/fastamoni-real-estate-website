@@ -1,66 +1,74 @@
 /** @format */
 
-const projectsData = [
+import { getRandomInt } from "../helper-functions/helper-functions";
+
+const projectsDescriptions = [
 	{
-		title: "Grenadines Heights",
+		// title: "Grenadines Heights",
 		projectBannerImg: "/assets/images/project-lagos-banner.png",
-		description: {
-			location: "Ikeja, Lagos",
-			bathRooms: 4,
-			bedRooms: 4,
+		houseDescription: {
+			bathRooms: getRandomInt(10),
+			bedRooms: getRandomInt(10),
 		},
-		likes: 890,
+		likes: getRandomInt(1000),
 	},
 	{
-		title: "GRA Enugu",
+		// title: "GRA Enugu",
 		projectBannerImg: "/assets/images/project-enugu-banner.jpg",
-		description: {
-			location: "GRA Enugu Town, Enugu",
-			bathRooms: 4,
-			bedRooms: 4,
+		houseDescription: {
+			bathRooms: getRandomInt(10),
+			bedRooms: getRandomInt(10),
 		},
-		likes: 890,
+		likes: getRandomInt(1000),
 	},
 	{
-		title: "Grenadines Heights",
+		// title: "Grenadines Heights",
 		projectBannerImg: "/assets/images/project-lagos-banner.png",
-		description: {
-			location: "Ikeja, Lagos",
-			bathRooms: 4,
-			bedRooms: 4,
+		houseDescription: {
+			bathRooms: getRandomInt(10),
+			bedRooms: getRandomInt(10),
 		},
-		likes: 890,
+		likes: getRandomInt(1000),
 	},
 	{
-		title: "GRA Enugu",
+		// title: "GRA Enugu",
 		projectBannerImg: "/assets/images/project-enugu-banner.jpg",
-		description: {
-			location: "GRA Enugu Town, Enugu",
-			bathRooms: 4,
-			bedRooms: 4,
+		houseDescription: {
+			bathRooms: getRandomInt(10),
+			bedRooms: getRandomInt(10),
 		},
-		likes: 890,
+		likes: getRandomInt(1000),
 	},
 	{
-		title: "Grenadines Heights",
+		// title: "Grenadines Heights",
 		projectBannerImg: "/assets/images/project-lagos-banner.png",
-		description: {
-			location: "Ikeja, Lagos",
-			bathRooms: 4,
-			bedRooms: 4,
+		houseDescription: {
+			bathRooms: getRandomInt(10),
+			bedRooms: getRandomInt(10),
 		},
-		likes: 890,
+		likes: getRandomInt(1000),
 	},
 	{
-		title: "GRA Enugu",
+		// title: "GRA Enugu",
 		projectBannerImg: "/assets/images/project-enugu-banner.jpg",
-		description: {
-			location: "GRA Enugu Town, Enugu",
-			bathRooms: 4,
-			bedRooms: 4,
+		houseDescription: {
+			bathRooms: getRandomInt(10),
+			bedRooms: getRandomInt(10),
 		},
-		likes: 890,
+		likes: getRandomInt(1000),
 	},
 ];
+
+const projectsLocations = [
+	"Lekki Gardens",
+	"Ocean lake",
+	"Swiss village",
+	"Banna Max express",
+];
+
+const projectsData = {
+	projectsDescriptions,
+	projectsLocations,
+};
 
 export default projectsData;

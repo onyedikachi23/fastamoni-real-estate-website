@@ -29,9 +29,11 @@ export default function useIsElementHeightScrolled(element) {
 	useEffect(() => {
 		// element must be a HTML element referenced using useRef.current
 		if (!isElement(element)) {
-			console.error("The provided parameters isn't a valid DOM element");
+			console.error(
+				"isElement: The provided parameter not yet a valid DOM element"
+			);
 			return;
-		} else console.log("parameters correct");
+		} else console.log("isElement: parameter correct");
 
 		// call handleScroll on initial render
 		handleScroll();
