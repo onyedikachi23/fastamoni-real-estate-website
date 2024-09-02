@@ -1,21 +1,12 @@
 /** @format */
 
 import { useCallback, useEffect, useState } from "react";
+import { isElement } from "../../helper-functions/helper-functions";
 
 export default function useIsElementHeightScrolled(element) {
 	// element must be a HTML element referenced using useRef.current
 
 	const [isTotalHeightScrolled, setIsTotalHeightScrolled] = useState(false);
-
-	// to check if element is a valid html element
-	function isElement(element) {
-		return element instanceof Element || element instanceof Document;
-
-		/*
-        got this simple solution from Stack Overflow:
-        https://stackoverflow.com/a/36894871/21363556
-        */
-	}
 
 	// check if the window's scrolled height has reached element's total height
 	const handleScroll = useCallback(() => {

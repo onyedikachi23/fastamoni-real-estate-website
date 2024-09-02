@@ -1,6 +1,6 @@
 /** @format */
 
-import { getRandomInt } from "../helper-functions/helper-functions";
+import { getRandomInt } from "../helper-functions/helper-functions.js";
 
 const projectsDescriptions = [
 	{

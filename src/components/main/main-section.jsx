@@ -1,10 +1,10 @@
 /** @format */
 
-import { Box, Flex } from "@chakra-ui/react";
-import PropertiesSearch from "./properties-locations-search/properties-search";
-import FeaturedProjects from "./featured-projects/featured-projects";
-import RealEstateDevs from "./estate-developers/estate-developers";
-import TestimonialsSection from "./testimonials-section/testimonials-section";
+import { Flex } from "@chakra-ui/react";
+import RealEstateDevs from "./estate-developers/estate-developers.jsx";
+import FeaturedProjects from "./featured-projects/featured-projects.jsx";
+import PropertiesSearch from "./properties-locations-search/properties-search.jsx";
+import TestimonialsSection from "./testimonials-section/testimonials-section.jsx";
 
 export default function MainSection() {
 	return (

@@ -14,12 +14,14 @@ import {
 	Text,
 	UnorderedList,
 } from "@chakra-ui/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import projectsData from "../../../data/projects.js";
 import { getRandomInt } from "../../../helper-functions/helper-functions.js";
 import ProjectsList from "./projects-list/projects-list.jsx";
 
 export default function FeaturedProjects() {
+	const [projectTabIndex, setProjectTabIndex] = useState(1);
+
 	// to generate dummy numbers of projects at projectsLocations in any page visit
 	const projectsNumbersInprojectsLocationsRef = useRef(
 		generateRandomProjectsNumbers()
@@ -96,6 +98,8 @@ export default function FeaturedProjects() {
 
 				{/* featured projects tabs*/}
 				<Tabs
+					index={projectTabIndex}
+					onChange={(index) => setProjectTabIndex(index)}
 					size="xs"
 					defaultIndex={1}
 					isFitted
