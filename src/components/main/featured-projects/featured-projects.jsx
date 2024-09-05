@@ -42,7 +42,7 @@ export default function FeaturedProjects() {
 		location: {
 			tabIndex,
 			tabElement
-		}
+		}, ...
 	}
 	*/
 
@@ -196,7 +196,8 @@ export default function FeaturedProjects() {
 									key={index}
 									paddingX={2}
 									gap={2}
-									whiteSpace="nowrap">
+									whiteSpace="nowrap"
+									scrollMarginTop={20}>
 									<Text as="span">{projectLocation}</Text>
 									<Badge
 										borderRadius="12px"

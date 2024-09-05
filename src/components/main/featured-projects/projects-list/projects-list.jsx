@@ -39,6 +39,7 @@ export default function ProjectsList({
 
 			return [...projectsDataItem];
 		});
+		console.log("fetched projects");
 	}
 
 	function handleLoadMore() {
@@ -64,9 +65,14 @@ export default function ProjectsList({
 
 	// useEffect to fetch projects
 	useEffect(() => {
-		if (!isProjectsCountWithInRange("projectsCount")) {
-			setIsLoadMoreActive(false);
+		if (!isProjectsCountWithInRange("projectsCount") && !projects) {
+			// if projectsCount >= noOfProjects on initial render, allow projects to be fetched, but load more btn becomes inactive
 
+			setIsLoadMoreActive(false);
+		} else if (!isProjectsCountWithInRange("projectsCount")) {
+			// if projectsCount >= noOfProjects on subsequent rerenders, no more projects is to be fetched and load more btn inactive.
+
+			setIsLoadMoreActive(false);
 			// don't fetch more projects
 			return;
 		}
