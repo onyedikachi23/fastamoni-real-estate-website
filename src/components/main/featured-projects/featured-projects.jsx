@@ -14,13 +14,53 @@ import {
 	Text,
 	UnorderedList,
 } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import {
+	useProjectTabsElementsRef,
+	useSelectedTabIndexSetterRef,
+} from "../../../context-providers/nav-tabs-ref-provider/nav-tabs-ref-provider.jsx";
 import projectsData from "../../../data/projects.js";
-import { getRandomInt } from "../../../helper-functions/helper-functions.js";
+import {
+	getRandomInt,
+	isElement,
+} from "../../../helper-functions/helper-functions.js";
 import ProjectsList from "./projects-list/projects-list.jsx";
 
 export default function FeaturedProjects() {
 	const [projectTabIndex, setProjectTabIndex] = useState(1);
+
+	// to make the project tabs elements' ref available to all components using the context API
+	const projectTabsElementsRef = useProjectTabsElementsRef();
+
+	// to make setProjectTabIndex() available to other components using the context API
+	const selectedTabIndexSetterRef = useSelectedTabIndexSetterRef();
+
+	// to dynamically hold projectTabs' elements' ref for each project
+	const locationsRef = useRef({});
+	/* 
+	example structure: locationsRef.current = {
+		location: {
+			tabIndex,
+			tabElement
+		}
+	}
+	*/
+
+	function handleUpdateRefsObj(locationTabDetails) {
+		// element should be valid HTML element
+		if (isElement(locationTabDetails.element)) {
+			const projectLocation = locationTabDetails.projectLocation
+				.toLowerCase()
+				.trim();
+
+			locationsRef.current[projectLocation] = {
+				tabIndex: locationTabDetails.index,
+				tabElement: locationTabDetails.element,
+			};
+
+			console.log(locationsRef.current);
+		}
+	}
 
 	// to generate dummy numbers of projects at projectsLocations in any page visit
 	const projectsNumbersInprojectsLocationsRef = useRef(
@@ -61,6 +101,12 @@ export default function FeaturedProjects() {
 
 		return result;
 	}
+
+	// useEffect for updating ProjectTabsContext and SelectedTabIndexSetterContext after initial render
+	useEffect(() => {
+		projectTabsElementsRef.current = locationsRef.current;
+		selectedTabIndexSetterRef.current = setProjectTabIndex;
+	}, []);
 
 	return (
 		<Box as="section">
@@ -140,6 +186,13 @@ export default function FeaturedProjects() {
 						{projectsData.projectsLocations.map(
 							(projectLocation, index) => (
 								<Tab
+									ref={(element) =>
+										handleUpdateRefsObj({
+											element,
+											projectLocation,
+											index: index + 1,
+										})
+									}
 									key={index}
 									paddingX={2}
 									gap={2}
