@@ -22,7 +22,7 @@ export function isElement(element) {
         */
 }
 
-export function scrollElIntoView(element) {
+export function scrollElementIntoView(element) {
 	// check if its a valid html element
 	if (!isElement(element)) {
 		console.error(
