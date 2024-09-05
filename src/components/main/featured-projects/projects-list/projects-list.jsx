@@ -183,6 +183,7 @@ export default function ProjectsList({
 															color="blue.100"
 															alignItems="center"
 															gap="4"
+															rowGap={2}
 															wrap="wrap">
 															<Flex
 																gap="1"
