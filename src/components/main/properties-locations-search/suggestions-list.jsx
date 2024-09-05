@@ -21,6 +21,11 @@ export default function Suggestions({
 		[setShowSuggestions]
 	);
 
+	function handleSuggestionClick(suggestion) {
+		setInputParams(suggestion);
+		setShowSuggestions(false);
+	}
+
 	/* function handleMouseMove(movement) {
 		movement && movement === "enter"
 			? setSuggestionsWillClose(false)
@@ -89,7 +94,7 @@ export default function Suggestions({
 					<ListItem
 						key={index}
 						width="fit-content"
-						onClick={() => setInputParams(suggestion)}>
+						onClick={() => handleSuggestionClick(suggestion)}>
 						<Text
 							color="white.100"
 							as="span"
