@@ -12,12 +12,21 @@ import {
 import React, { useEffect, useState } from "react";
 import projectsData from "../../../data/projects";
 import Suggestions from "./suggestions-list";
+import {
+	useProjectTabsElementsRef,
+	useSelectedTabIndexSetterRef,
+} from "../../../context-providers/nav-tabs-ref-provider/nav-tabs-ref-provider";
+import { scrollElementIntoView } from "../../../helper-functions/helper-functions";
 
 export default function PropertiesSearch() {
 	const [projectsLocations, setProjectLocations] = useState(null);
 	const [searchParams, setSearchParams] = useState("");
 	const [filteredLocations, setFilteredLocations] = useState(null);
 	const [showDropdown, setShowDropdown] = useState(false);
+
+	// contexts for handling scrolling to project tab index and showing it contents
+	const projectTabsElementsRef = useProjectTabsElementsRef();
+	const setSelectedProjectTabIndexRef = useSelectedTabIndexSetterRef();
 
 	function getLocatiions() {
 		setProjectLocations(projectsData.projectsLocations);
@@ -49,6 +58,34 @@ export default function PropertiesSearch() {
 			setShowDropdown(true);
 		} else {
 			setShowDropdown(false);
+		}
+	}
+
+	function handleScrollToProjectTab() {
+		// scroll to project tab index and show its panel contents
+		/*
+		example structure: projectTabsElementsRef.current = {
+			location: {
+				tabIndex,
+				tabElement
+			}, ...
+		}
+		*/
+		const location = searchParams.toLocaleLowerCase().trim();
+
+		const projectTabElement =
+			projectTabsElementsRef.current?.[location]?.tabElement;
+		const projectTabIndex =
+			projectTabsElementsRef.current?.[location]?.tabIndex;
+		const showProjectTabContents = setSelectedProjectTabIndexRef.current;
+		console.log(projectTabElement, projectTabIndex, showProjectTabContents);
+
+		// scroll to project tab and show its contents
+		if (projectTabElement) {
+			// scroll element into view
+			scrollElementIntoView(projectTabElement);
+			// show project tab contents
+			showProjectTabContents(projectTabIndex);
 		}
 	}
 
@@ -85,7 +122,9 @@ export default function PropertiesSearch() {
 						top: "50%",
 						left: "2%",
 						transform: "translateY(-50%)",
-					}}></i>
+						zIndex: "10",
+					}}
+					onClick={handleScrollToProjectTab}></i>
 
 				<InputRightAddon flex={1}>
 					<Select
