@@ -20,7 +20,7 @@ export default function PageComingSoon({ setIsMobileNavBarShown, pageTitle }) {
 	useEffect(() => {
 		// When the component mounts, open the modal
 		onOpen();
-		setIsMobileNavBarShown(false);
+		setIsMobileNavBarShown && setIsMobileNavBarShown(false);
 
 		// close after 3s
 		const closeTimeout = setTimeout(() => {
