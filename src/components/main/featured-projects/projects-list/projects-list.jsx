@@ -16,7 +16,7 @@ import {
 	Text,
 	UnorderedList,
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ShowerIcon } from "../../../../svg-icons/icons";
 
 export default function ProjectsList({
@@ -63,6 +63,76 @@ export default function ProjectsList({
 		}
 	}
 
+	// centers leftover grid items horizontally using line-based placement
+	const centerLeftOverGridItems = useCallback((columns, index) => {
+		function getIndexesOfLeftOvers() {
+			const leftOverIndexes = {};
+
+			for (let i = 0; i < noOfLeftOvers; i++) {
+				// index starts from 0, so last item's index = noOfProjects - 1, so i to be incremented by 1
+
+				// noOfLeftOvers - i = 1 or 2, (e.g if noOfLeftOvers = 2, then 2 is last item and 1 is 2nd to last item)
+
+				leftOverIndexes[noOfLeftOvers - i] = noOfProjects - (i + 1);
+			}
+
+			return leftOverIndexes;
+		}
+
+		function getLineEndForOneLeftOver() {
+			if (leftOverIndexes[1] === index) {
+				return 4;
+			}
+		}
+
+		function getLineEndForTwoLeftOvers() {
+			switch (index) {
+				// case for 2nd to last item
+				case leftOverIndexes[1]:
+					return 2;
+
+				// case for last item
+				case leftOverIndexes[2]:
+					return 4;
+
+				default:
+					break;
+			}
+		}
+
+		const noOfLeftOvers = noOfProjects % columns; // alternates between 0, 1, 2
+		const leftOverIndexes = getIndexesOfLeftOvers();
+
+		console.log(leftOverIndexes, index, noOfLeftOvers);
+
+		if (noOfLeftOvers === 0) {
+			return;
+		}
+
+		// There'd be 3 column breakpoints
+		// each grid item spans two columns
+		switch (columns) {
+			case 2:
+				// no leftover items for this case
+				return;
+
+			case 4:
+				// can only have one leftover item for this case
+				return getLineEndForOneLeftOver();
+
+			case 6:
+			// can have one or two leftover items for this case
+			/* if (noOfLeftOvers === 1) {
+					return getLineSrtForOneLeftOver();
+				} else if (noOfLeftOvers === 2) {
+					return getLineStartForTwoLeftOvers();
+				} */
+
+			default:
+				return;
+		}
+	});
+
 	// useEffect to fetch projects
 	useEffect(() => {
 		if (!isProjectsCountWithInRange("projectsCount") && !projects) {
@@ -105,9 +175,9 @@ export default function ProjectsList({
 					gap={8}
 					rowGap={12}
 					templateColumns={{
-						base: "1fr",
-						sm: "repeat(2, 1fr)",
-						lg: "repeat(3, 1fr)",
+						base: "2fr",
+						sm: "repeat(4, 1fr)",
+						lg: "repeat(6, 1fr)",
 					}}>
 					{projects?.[0]?.projectLocation // checks if projects has at least 1 item and if the item has a description
 						? projects.map((project, index) => {
@@ -120,7 +190,23 @@ export default function ProjectsList({
 								}
 
 								const item = (
-									<GridItem key={index + projectsCount}>
+									<GridItem
+										key={index + projectsCount}
+										gridColumn="span 2"
+										gridColumnEnd={{
+											base: centerLeftOverGridItems(
+												2,
+												index
+											),
+											sm: centerLeftOverGridItems(
+												4,
+												index
+											),
+											lg: centerLeftOverGridItems(
+												6,
+												index
+											),
+										}}>
 										<ListItem key={projectsCount + index}>
 											<Card
 												boxShadow="none"
