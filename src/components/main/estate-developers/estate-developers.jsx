@@ -2,6 +2,8 @@
 
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import EstateProjectsList from "./estate-projects/estate-projects-list";
+import { Route, Routes } from "react-router-dom";
+import PageComingSoon from "../../page-coming-soon-modal/page-coming-soon-modal";
 
 export default function RealEstateDevs() {
 	return (
@@ -26,6 +28,13 @@ export default function RealEstateDevs() {
 
 			{/* estate projects */}
 			<EstateProjectsList />
+
+			<Routes>
+				<Route
+					path="/projects-page"
+					element={<PageComingSoon pageTitle="Projects page" />}
+				/>
+			</Routes>
 		</Flex>
 	);
 }

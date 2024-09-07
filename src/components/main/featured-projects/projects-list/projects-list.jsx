@@ -18,6 +18,8 @@ import {
 } from "@chakra-ui/react";
 import { useCallback, useEffect, useState } from "react";
 import { ShowerIcon } from "../../../../svg-icons/icons";
+import { Route, Link as RouterLink, Routes } from "react-router-dom";
+import PageComingSoon from "../../../page-coming-soon-modal/page-coming-soon-modal";
 
 export default function ProjectsList({
 	noOfProjects,
@@ -246,7 +248,10 @@ export default function ProjectsList({
 													</CardBody>
 
 													<CardFooter>
-														<ChakraLink color="blue.100">
+														<ChakraLink
+															color="blue.100"
+															as={RouterLink}
+															to="/project-details">
 															View Details
 														</ChakraLink>
 													</CardFooter>

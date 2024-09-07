@@ -4,6 +4,7 @@ import {
 	Box,
 	Flex,
 	Heading,
+	Link,
 	ListItem,
 	Text,
 	UnorderedList,
@@ -57,7 +58,14 @@ export default function Footer() {
 						borderRadius="50%"
 						color="white.100"
 						bgColor="blue.100">
-						<i className="ri-facebook-circle-fill"></i>
+						<Link
+							href="https://web.facebook.com/"
+							isExternal
+							_hover={{
+								textDecor: "none",
+							}}>
+							<i className="ri-facebook-circle-fill"></i>
+						</Link>
 					</ListItem>
 					<ListItem
 						maxWidth="24px"
@@ -73,7 +81,14 @@ export default function Footer() {
 						borderRadius="50%"
 						color="white.100"
 						bgColor="blue.100">
-						<i className="ri-twitter-x-fill"></i>
+						<Link
+							href="https://x.com/"
+							isExternal
+							_hover={{
+								textDecor: "none",
+							}}>
+							<i className="ri-twitter-x-fill"></i>
+						</Link>
 					</ListItem>
 					<ListItem
 						maxWidth="24px"
@@ -89,7 +104,14 @@ export default function Footer() {
 						borderRadius="50%"
 						color="white.100"
 						bgColor="blue.100">
-						<i className="ri-instagram-line"></i>
+						<Link
+							href="https://www.instagram.com/"
+							isExternal
+							_hover={{
+								textDecor: "none",
+							}}>
+							<i className="ri-instagram-line"></i>
+						</Link>
 					</ListItem>
 					<ListItem
 						maxWidth="24px"
@@ -105,7 +127,14 @@ export default function Footer() {
 						borderRadius="50%"
 						color="white.100"
 						bgColor="blue.100">
-						<i className="ri-linkedin-fill"></i>
+						<Link
+							href="https://www.linkedin.com/"
+							isExternal
+							_hover={{
+								textDecor: "none",
+							}}>
+							<i className="ri-linkedin-fill"></i>
+						</Link>
 					</ListItem>
 				</Flex>
 			</UnorderedList>

@@ -1,6 +1,8 @@
 /** @format */
 
 import { Link as ChakraLink, Flex, Heading, Text } from "@chakra-ui/react";
+import { Route, Link as RouterLink, Routes } from "react-router-dom";
+import PageComingSoon from "../../../page-coming-soon-modal/page-coming-soon-modal";
 
 export default function EstateProject({ bgImgUrl }) {
 	return (
@@ -41,7 +43,17 @@ export default function EstateProject({ bgImgUrl }) {
 			</Flex>
 
 			{/* Link to view projects */}
-			<ChakraLink variant="primary" bgColor="white.100" color="blue.900">
+			<ChakraLink
+				variant="primary"
+				bgColor="white.100"
+				color="blue.900"
+				as={RouterLink}
+				to="/projects-page"
+				transition="all.25s ease-in-out"
+				_hover={{
+					textDecoration: "none",
+					transform: "scale(1.1)",
+				}}>
 				View Projects
 			</ChakraLink>
 		</Flex>

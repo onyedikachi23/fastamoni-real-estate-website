@@ -25,6 +25,8 @@ import {
 	isElement,
 } from "../../../helper-functions/helper-functions.js";
 import ProjectsList from "./projects-list/projects-list.jsx";
+import { Routes, Route } from "react-router-dom";
+import PageComingSoon from "../../page-coming-soon-modal/page-coming-soon-modal.jsx";
 
 export default function FeaturedProjects() {
 	const [projectTabIndex, setProjectTabIndex] = useState(1);
@@ -293,6 +295,16 @@ export default function FeaturedProjects() {
 								</TabPanel>
 							)
 						)}
+
+						{/* For all view details link tag */}
+						<Routes>
+							<Route
+								path="/project-details"
+								element={
+									<PageComingSoon pageTitle="Project Details page" />
+								}
+							/>
+						</Routes>
 					</TabPanels>
 				</Tabs>
 			</Flex>

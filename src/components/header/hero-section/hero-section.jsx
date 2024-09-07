@@ -1,6 +1,7 @@
 /** @format */
 
 import { Box, Heading, Link as ChakraLink, Text } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
 
 export default function HeroSection() {
 	return (
@@ -43,7 +44,9 @@ export default function HeroSection() {
 					transform: "scale(1.2)",
 					fontWeight: "bold",
 					border: "none",
-				}}>
+				}}
+				as={RouterLink}
+				to="/projects-page">
 				Explore
 			</ChakraLink>
 		</Box>
