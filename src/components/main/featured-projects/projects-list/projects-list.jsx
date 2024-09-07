@@ -97,11 +97,13 @@ export default function ProjectsList({
 			maxHeight={maxHeight ? maxHeight : "none"}
 			overflow="auto">
 			<UnorderedList
-				paddingX={4}
+				padding={4}
+				borderRadius="3xl"
 				overflow="auto"
 				listStyleType="none"
 				margin={0}
-				marginBottom={4}>
+				marginBottom={4}
+				border="1px solid #7D7F88">
 				<Grid
 					gap={8}
 					rowGap={12}
