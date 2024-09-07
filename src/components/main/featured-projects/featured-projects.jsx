@@ -57,8 +57,6 @@ export default function FeaturedProjects() {
 				tabIndex: locationTabDetails.index,
 				tabElement: locationTabDetails.element,
 			};
-
-			console.log(locationsRef.current);
 		}
 	}
 

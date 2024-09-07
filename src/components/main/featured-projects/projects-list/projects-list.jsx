@@ -39,7 +39,6 @@ export default function ProjectsList({
 
 			return [...projectsDataItem];
 		});
-		console.log("fetched projects");
 	}
 
 	function handleLoadMore() {
