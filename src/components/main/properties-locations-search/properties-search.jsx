@@ -8,6 +8,7 @@ import {
 	Select,
 	Flex,
 	filter,
+	Text,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import projectsData from "../../../data/projects";
@@ -23,6 +24,7 @@ export default function PropertiesSearch() {
 	const [searchParams, setSearchParams] = useState("");
 	const [filteredLocations, setFilteredLocations] = useState(null);
 	const [showDropdown, setShowDropdown] = useState(false);
+	const [showLocationNotFound, setShowLocationNotFound] = useState(false);
 
 	// contexts for handling scrolling to project tab index and showing it contents
 	const projectTabsElementsRef = useProjectTabsElementsRef();
@@ -86,6 +88,23 @@ export default function PropertiesSearch() {
 			scrollElementIntoView(projectTabElement);
 			// show project tab contents
 			showProjectTabContents(projectTabIndex);
+		} else {
+			setShowLocationNotFound(true);
+		}
+	}
+
+	function handleEnterKeyPress(event) {
+		if (event.key === "Enter") {
+			handleScrollToProjectTab();
+		}
+	}
+
+	function handleInputFocusChange(event) {
+		if (event.type === "focus") {
+			filteredLocations?.length === 0 && setShowLocationNotFound(true);
+		} else if (event.type === "blur") {
+			setShowLocationNotFound(false);
+			setShowDropdown(false);
 		}
 	}
 
@@ -93,6 +112,14 @@ export default function PropertiesSearch() {
 	useEffect(() => {
 		getLocatiions();
 	}, []);
+
+	useEffect(() => {
+		if (filteredLocations?.length === 0) {
+			setShowLocationNotFound(true);
+		} else {
+			setShowLocationNotFound(false);
+		}
+	}, [filteredLocations]);
 
 	return (
 		<Flex
@@ -111,6 +138,9 @@ export default function PropertiesSearch() {
 					placeholder="Search property state or city"
 					value={searchParams}
 					onInput={handleInputChange}
+					onKeyDown={handleEnterKeyPress}
+					onFocus={handleInputFocusChange}
+					onBlur={handleInputFocusChange}
 					flex={1}
 					paddingLeft="9%"
 				/>
@@ -125,6 +155,18 @@ export default function PropertiesSearch() {
 						zIndex: "10",
 					}}
 					onClick={handleScrollToProjectTab}></i>
+				{showLocationNotFound && (
+					<Text
+						as="span"
+						color="red"
+						fontSize="xs"
+						fontWeight="semibold"
+						position="absolute"
+						top="100%"
+						left="0%">
+						Location not found
+					</Text>
+				)}
 
 				<InputRightAddon flex={1}>
 					<Select
