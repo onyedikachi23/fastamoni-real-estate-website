@@ -103,7 +103,7 @@ export default function ProjectsList({
 				listStyleType="none"
 				margin={0}
 				marginBottom={4}
-				border="1px solid #7D7F88">
+				border="1px solid rgb(226, 232, 240)">
 				<Grid
 					gap={8}
 					rowGap={12}
