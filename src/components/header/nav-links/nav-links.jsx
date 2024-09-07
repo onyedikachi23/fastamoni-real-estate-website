@@ -2,7 +2,12 @@
 
 import { Box, Button, Link as ChakraLink, Flex } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
-import { Route, NavLink as RouterLink, Routes } from "react-router-dom";
+import {
+	Route,
+	NavLink as RouterLink,
+	Link as RouteLink,
+	Routes,
+} from "react-router-dom";
 import useIsElementHeightScrolled from "../../../custom-hooks/element-height-scrolled/element-height-scrolled";
 import PageComingSoon from "../../page-coming-soon-modal/page-coming-soon-modal";
 import NavTabModal from "./nav-tabs-modal";
@@ -74,10 +79,12 @@ export default function NavBar() {
 					top="50%"
 					right={8}
 					transform="translate(0, -50%)"
-					transition=" all .25s ease-in-out"
+					transition="all .25s ease-in-out"
 					_hover={{
 						transform: "scale(1.1) translate(0, -50%)",
-					}}>
+					}}
+					as={RouteLink}
+					to="/get-started">
 					Get Started
 				</ChakraLink>
 
@@ -121,6 +128,13 @@ export default function NavBar() {
 							}
 						/>
 					</Route>
+
+					<Route
+						path="/get-started"
+						element={
+							<PageComingSoon pageTitle="Getting started page" />
+						}
+					/>
 				</Routes>
 			</Flex>
 		</>
