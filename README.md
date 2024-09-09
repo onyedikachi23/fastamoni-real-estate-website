@@ -2,6 +2,8 @@
 
 # FastaMoni Real Estate website assessment project
 
+Website is live at [fastamoni-real-estate](https://fastamoni-react-estate-onyedikachi23.netlify.app/)
+
 ## Major Frameworks and Libraries used
 
 -   Vite + React
