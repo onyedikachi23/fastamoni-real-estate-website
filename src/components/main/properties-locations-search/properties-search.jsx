@@ -9,6 +9,9 @@ import {
 	Flex,
 	filter,
 	Text,
+	FormLabel,
+	Box,
+	InputLeftElement,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import projectsData from "../../../data/projects";
@@ -133,7 +136,18 @@ export default function PropertiesSearch() {
 				display="flex"
 				justifyContent="space-between"
 				alignItems="center">
+				<InputLeftElement>
+					<i
+						className="ri-search-line"
+						style={{
+							cursor: "pointer",
+
+							zIndex: "10",
+						}}
+						onClick={handleScrollToProjectTab}></i>
+				</InputLeftElement>
 				<Input
+					id="search-input"
 					type="search"
 					placeholder="Search property state or city"
 					value={searchParams}
@@ -142,34 +156,44 @@ export default function PropertiesSearch() {
 					onFocus={handleInputFocusChange}
 					onBlur={handleInputFocusChange}
 					flex={1}
-					paddingLeft="9%"
-				/>
-				<i
-					className="ri-search-line"
-					style={{
-						cursor: "pointer",
-						position: "absolute",
-						top: "50%",
-						left: "2%",
-						transform: "translateY(-50%)",
-						zIndex: "10",
+					_placeholder={{
+						opacity: {
+							base: showLocationNotFound ? 0.6 : 0,
+							sm: 0.6,
+						},
+						fontSize: "sm",
 					}}
-					onClick={handleScrollToProjectTab}></i>
-				{showLocationNotFound && (
-					<Text
-						as="span"
-						color="red"
-						fontSize="xs"
-						fontWeight="semibold"
-						position="absolute"
-						top="100%"
-						left="0%">
-						Location not found
-					</Text>
-				)}
+				/>
+				<FormLabel
+					htmlFor="search-input"
+					position="absolute"
+					top="100%"
+					left="0%">
+					{showLocationNotFound ? (
+						<Text
+							as="span"
+							color="red"
+							fontSize="xs"
+							fontWeight="semibold">
+							Location not found
+						</Text>
+					) : (
+						<Text
+							as="span"
+							display={{
+								base: "initial",
+								sm: "none",
+							}}
+							fontSize="sm"
+							opacity={0.6}>
+							Search property state or city
+						</Text>
+					)}
+				</FormLabel>
 
 				<InputRightAddon flex={1}>
 					<Select
+						id="location-filters-options"
 						variant="unstyled"
 						placeholder="Search all filters"
 						cursor="pointer"
@@ -190,6 +214,18 @@ export default function PropertiesSearch() {
 						<option value="abuja">Abuja</option>
 						<option value="enugu">Enugu</option>
 					</Select>
+					<FormLabel
+						htmlFor="location-filters-options"
+						position="absolute"
+						bottom="85%"
+						right={0}
+						fontSize="xs"
+						display={{
+							base: "initial",
+							sm: "none",
+						}}>
+						Filter options
+					</FormLabel>
 				</InputRightAddon>
 			</InputGroup>
 
