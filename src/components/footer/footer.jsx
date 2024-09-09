@@ -128,7 +128,7 @@ export default function Footer() {
 						color="white.100"
 						bgColor="blue.100">
 						<Link
-							href="https://www.linkedin.com/"
+							href="https://www.linkedin.com/in/onyedikachi23/"
 							isExternal
 							_hover={{
 								textDecor: "none",
