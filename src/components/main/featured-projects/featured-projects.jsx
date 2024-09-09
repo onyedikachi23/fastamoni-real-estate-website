@@ -224,7 +224,7 @@ export default function FeaturedProjects() {
 
 					{/* Tab Items - Projects gallery */}
 					<TabPanels>
-						<TabPanel>
+						<TabPanel paddingX={0}>
 							{/* For All tab 
 							Each projectsLocation's project would be listed here in ascending order
 							*/}
@@ -234,7 +234,10 @@ export default function FeaturedProjects() {
 								margin={0}
 								maxHeight="68rem"
 								overflow="auto"
-								paddingX={4}>
+								paddingX={{
+									base: 0,
+									sm: 4,
+								}}>
 								<Flex
 									gap={14}
 									direction="column"
