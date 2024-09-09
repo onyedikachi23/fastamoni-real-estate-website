@@ -198,7 +198,7 @@ export default function FeaturedProjects() {
 									gap={2}
 									whiteSpace="nowrap"
 									scrollMarginTop={{
-										base: 85,
+										base: "10rem",
 										sm: 20,
 									}}>
 									<Text as="span">{projectLocation}</Text>
