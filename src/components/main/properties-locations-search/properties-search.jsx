@@ -38,8 +38,6 @@ export default function PropertiesSearch() {
 	}
 
 	function filterLocationMatches(locationQuery) {
-		console.log(locationQuery);
-
 		const filteredData = projectsLocations?.[0]
 			? projectsLocations.filter(
 					(projectLocation) =>
@@ -47,8 +45,6 @@ export default function PropertiesSearch() {
 						-1
 			  )
 			: [];
-
-		console.log(filteredData);
 
 		setFilteredLocations(filteredData);
 	}
@@ -83,7 +79,6 @@ export default function PropertiesSearch() {
 		const projectTabIndex =
 			projectTabsElementsRef.current?.[location]?.tabIndex;
 		const showProjectTabContents = setSelectedProjectTabIndexRef.current;
-		console.log(projectTabElement, projectTabIndex, showProjectTabContents);
 
 		// scroll to project tab and show its contents
 		if (projectTabElement) {
