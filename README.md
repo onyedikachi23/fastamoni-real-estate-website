@@ -1,8 +1,61 @@
-# React + Vite
+<!-- @format -->
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# FastaMoni Real Estate website assessment project
 
-Currently, two official plugins are available:
+## Major Frameworks and Libraries used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   Vite + React
+-   Chakra UI: A React UI component library - [chakra-ui.com](https://chakra-ui.com/)
+-   SwiperJS: A React library for making accessible swiper carousels - [swiperjs.com/react](https://swiperjs.com/react)
+
+## Installation
+
+### Prerequisites
+
+-   Node.js installed
+-   npm installed
+-   Git installed
+
+### Clone repo
+
+```bash
+
+git clone https://github.com/onyedikachi23/fastamoni-real-estate-website.git
+
+```
+
+### Install dependencies
+
+```bash
+
+npm install
+
+```
+
+### Run development server
+
+```bash
+
+npm run dev
+
+```
+
+View the website locally on your local machine at **http://localhost:5173/**.
+
+### To build for production
+
+run
+
+```bash
+
+npm run build
+
+```
+
+## Acknowledgement
+
+This website was solely built by me.
+
+### I'm available for hire
+
+Check out my LinkedIn profile - [Onyedikachi Ozoani](https://www.linkedin.com/in/onyedikachi23/).
