@@ -287,7 +287,7 @@ export default function FeaturedProjects() {
 						{/* panel for each projectsLocation tab */}
 						{projectsData.projectsLocations.map(
 							(projectLocation, index) => (
-								<TabPanel key={index}>
+								<TabPanel key={index} paddingX={0}>
 									<ProjectsList
 										noOfProjects={
 											projectsNumbersInprojectsLocationsRef
