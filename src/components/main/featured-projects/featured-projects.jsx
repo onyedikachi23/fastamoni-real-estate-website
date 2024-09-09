@@ -197,7 +197,10 @@ export default function FeaturedProjects() {
 									paddingX={2}
 									gap={2}
 									whiteSpace="nowrap"
-									scrollMarginTop={20}>
+									scrollMarginTop={{
+										base: 85,
+										sm: 20,
+									}}>
 									<Text as="span">{projectLocation}</Text>
 									<Badge
 										borderRadius="12px"
