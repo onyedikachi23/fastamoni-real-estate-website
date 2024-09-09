@@ -62,19 +62,19 @@ export default function Suggestions({
  */
 	useEffect(() => {
 		// add an event listener to close on outside click
-		window.addEventListener("click", handleClickOutside);
+		document.addEventListener("click", handleClickOutside);
 
 		// close after 15s
 		// handleTimeoutClose();
 		const closeTimeout = setTimeout(() => {
 			setShowSuggestions(false);
-			window.removeEventListener("click", handleClickOutside);
-		}, 15000);
+			document.removeEventListener("click", handleClickOutside);
+		}, 159000);
 
 		// Cleanup: Remove the event listener and Timeout when component unmounts
 		return () => {
 			clearTimeout(closeTimeout);
-			window.removeEventListener("click", handleClickOutside);
+			document.removeEventListener("click", handleClickOutside);
 		};
 	}, [setShowSuggestions, handleClickOutside]);
 
@@ -82,7 +82,7 @@ export default function Suggestions({
 		filteredSuggestions.length > 0 && (
 			<UnorderedList
 				zIndex={10}
-				position="absolute !important"
+				position="absolute"
 				top="100%"
 				left="0%"
 				margin={0}
@@ -104,7 +104,9 @@ export default function Suggestions({
 						<ListItem
 							key={index}
 							width="fit-content"
-							onClick={() => handleSuggestionClick(suggestion)}>
+							onMouseDown={() =>
+								handleSuggestionClick(suggestion)
+							}>
 							<Text
 								color="white.100"
 								as="span"
